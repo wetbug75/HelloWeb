@@ -3,6 +3,6 @@
 <ol>
 @foreach(var alertMode in Model.AlertModes)
 {
-	<li class="@(alertMode.IsSelected ? "selected" : "")">@alertMode.Name</li>
+	<a href="@alertMode.ChangeTypeUrl"><li class="@(alertMode.IsSelected ? "selected" : "")">@alertMode.Name</li></a>
 }
 </ol>
