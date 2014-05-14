@@ -19,3 +19,24 @@ C:\Users\akrause\documents\visual studio 2012\Projects\HelloWeb\HelloWeb\bin\Sys
 C:\Users\akrause\documents\visual studio 2012\Projects\HelloWeb\HelloWeb\obj\Debug\HelloWeb.csprojResolveAssemblyReference.cache
 C:\Users\akrause\documents\visual studio 2012\Projects\HelloWeb\HelloWeb\obj\Debug\HelloWeb.dll
 C:\Users\akrause\documents\visual studio 2012\Projects\HelloWeb\HelloWeb\obj\Debug\HelloWeb.pdb
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\HelloWeb.dll
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\HelloWeb.pdb
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\EntityFramework.dll
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\System.Web.Helpers.dll
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\System.Web.Mvc.dll
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\System.Web.Providers.dll
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\System.Web.Razor.dll
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\System.Web.WebPages.Deployment.dll
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\System.Web.WebPages.dll
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\System.Web.WebPages.Razor.dll
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\EntityFramework.xml
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\System.Web.Helpers.xml
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\System.Web.Mvc.xml
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\System.Web.Razor.xml
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\System.Web.WebPages.xml
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\System.Web.WebPages.Deployment.xml
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\System.Web.WebPages.Razor.xml
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\obj\Debug\HelloWeb.csprojResolveAssemblyReference.cache
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\obj\Debug\HelloWeb.dll
+C:\Users\jsterling\Projects\HelloWeb\HelloWeb\obj\Debug\HelloWeb.pdb

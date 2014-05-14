@@ -1,66 +1,84 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Net;
+﻿using System.Web.Mvc;
+using HelloWeb.Enumerations;
+using HelloWeb.Models;
 
 namespace HelloWeb.Controllers
 {
-    public class HomeController : Controller
-    {
-        public ActionResult Index()
-        {
-            ViewBag.Message = "Welcome to ASP.NET MVC Andrew!";
+	public class HomeController : Controller
+	{
+		// declare static variables that act as 'global' variables:
+		private static AlertType _currentAlertType = AlertType.TestOff;
+		private static bool      _lastAlertStatus;
 
-            return View();
-        }
+		public ActionResult Index()
+		{
+			// define the model for the home page:
+			var model = new HomeModel
+				{
+					AlertModes = new []
+						{
+							new AlertMode
+								{
+									Type = AlertType.TestOff,
+									Name = "Test - OFF",
+									IsSelected = (_currentAlertType == AlertType.TestOff),
+									ChangeTypeUrl = Url.Action("ChangeAlertType", new { newAlertType = AlertType.TestOff })
+								},
+							new AlertMode
+								{
+									Type = AlertType.TestOn,
+									Name = "Test - ON",
+									IsSelected = (_currentAlertType == AlertType.TestOn),
+									ChangeTypeUrl = Url.Action("ChangeAlertType", new { newAlertType = AlertType.TestOn })
+								},
+							new AlertMode
+								{
+									Type = AlertType.TestBlink,
+									Name = "Test - BLINK",
+									IsSelected = (_currentAlertType == AlertType.TestBlink),
+									ChangeTypeUrl = Url.Action("ChangeAlertType", new { newAlertType = AlertType.TestBlink })
+								}
+						}
+				};
 
-        public ActionResult Stock()
-        {
-            //http://download.finance.yahoo.com/d/quotes.csv?s=aapl&f=snl1c1p2&e=.xml
+			// display the home page view:
+			return View(model);
+		}
 
-            WebClient client = new WebClient();
-            byte[] aapl = client.DownloadData("http://download.finance.yahoo.com/d/quotes.csv?s=aapl&f=snl1c1p2&e=.csv");
-            String aaplData = System.Text.Encoding.UTF8.GetString(aapl);
+		public ActionResult ChangeAlertType(AlertType newAlertType)
+		{
+			// change the alert type to the new value passed in:
+			_currentAlertType = newAlertType;
 
-            byte[] goog = client.DownloadData("http://download.finance.yahoo.com/d/quotes.csv?s=goog&f=snl1c1p2&e=.csv");
-            String googData = System.Text.Encoding.UTF8.GetString(goog);
+			// redirect back to the home page to view the result:
+			return RedirectToAction("Index");
+		}
 
-            byte[] micro = client.DownloadData("http://download.finance.yahoo.com/d/quotes.csv?s=msft&f=snl1c1p2&e=.csv");
-            String microData = System.Text.Encoding.UTF8.GetString(micro);
+		public ActionResult Status()
+		{
+			// deterine the current status value based on the alert type:
+			bool statusValue;
+			switch (_currentAlertType)
+			{
+				case AlertType.TestOff:
+					statusValue = false;
+					break;
+				case AlertType.TestOn:
+					statusValue = true;
+					break;
+				case AlertType.TestBlink:
+					statusValue = !_lastAlertStatus;
+					break;
+				default:
+					statusValue = false;
+					break;
+			}
 
-            ViewBag.apple = StockFormat(aaplData);
-            ViewBag.google = StockFormat(googData);
-            ViewBag.microsoft = StockFormat(microData);
+			// save the last alert status:
+			_lastAlertStatus = statusValue;
 
-            //Response.Write(data);
-            //Response.End();
-
-            return View();
-        }
-
-        public ActionResult AirFare()
-        {
-            Response.Write("Airplanes!");
-            return View();
-        }
-
-        //go here for stock info: http://vikku.info/codetrash/Yahoo_Finance_Stock_Quote_API
-        public ActionResult About()
-        {
-            return View();
-        }
-
-        public string StockFormat(string word)
-        {
-            string result = word.Substring(word.IndexOf(',') + 2);
-            result = result.Substring(0, result.IndexOf(',') - 1) + " | Last Trade Price: " + result.Substring(result.IndexOf(',') + 1);
-            result = result.Substring(0, result.IndexOf(',')) + " | Change: " + result.Substring(result.IndexOf(',') + 1);
-            result = result.Substring(0, result.IndexOf(',')) + " | Change in Percent: " + result.Substring(result.IndexOf(',') + 2);
-            result = result.Substring(0, result.Length - 3); //why -3?
-            return result;
-        }
-
-    }
+			// return "1" if true; otherwise "0":
+			return Content(statusValue ? "1" : "0");
+		}
+	}
 }
