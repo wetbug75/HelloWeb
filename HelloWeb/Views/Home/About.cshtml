@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "About Us";
+    var message = "not yet submitted";
+    if(IsPost)
+    {
+        message = "now submitted";
+    }
+}
+
+<li>@Html.ActionLink("Data", "Data", "About")</li>
+
+<h2>About</h2>
+@if (IsPost)
+{
+    <p>You submitted the page at @DateTime.Now</p>
+}
+    
+    <p>@message</p>
+
+
+
+    <form method ="post">
+        <input type ="button" id="buton" value="Save"/>
+    </form>
+
