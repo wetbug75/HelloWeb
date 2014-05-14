@@ -4,6 +4,7 @@
 	{
 		TestOff,
 		TestOn,
-		TestBlink
+		TestBlink,
+        StockCheck
 	}
 }

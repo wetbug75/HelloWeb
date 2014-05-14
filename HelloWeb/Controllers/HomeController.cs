@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using HelloWeb.Enumerations;
 using HelloWeb.Models;
+using System.Net;
 
 namespace HelloWeb.Controllers
 {
@@ -37,7 +38,14 @@ namespace HelloWeb.Controllers
 									Name = "Test - BLINK",
 									IsSelected = (_currentAlertType == AlertType.TestBlink),
 									ChangeTypeUrl = Url.Action("ChangeAlertType", new { newAlertType = AlertType.TestBlink })
-								}
+								},
+                            new AlertMode
+                                {
+                                    Type = AlertType.StockCheck,
+									Name = "- Stock Alert",
+									IsSelected = (_currentAlertType == AlertType.StockCheck),
+									ChangeTypeUrl = Url.Action("ChangeAlertType", new { newAlertType = AlertType.StockCheck })
+                                }
 						}
 				};
 
@@ -69,6 +77,9 @@ namespace HelloWeb.Controllers
 				case AlertType.TestBlink:
 					statusValue = !_lastAlertStatus;
 					break;
+                case AlertType.StockCheck: //if stock is down, alert light turns on
+                    statusValue = isStockDown("http://download.finance.yahoo.com/d/quotes.csv?s=aapl&f=snl1c1p2&e=.csv");
+                    break;
 				default:
 					statusValue = false;
 					break;
@@ -80,5 +91,16 @@ namespace HelloWeb.Controllers
 			// return "1" if true; otherwise "0":
 			return Content(statusValue ? "1" : "0");
 		}
+
+        public bool isStockDown(string x)
+        {
+            WebClient client = new WebClient();
+            byte[] rawStock = client.DownloadData(x);
+            x = System.Text.Encoding.UTF8.GetString(rawStock);
+            x = x.Substring(x.LastIndexOf('"', x.Length - 4) + 1, 1); //gets + or - sign from percentage
+            if(x.Equals("-"))
+                return true;
+            return false;
+        }
 	}
 }

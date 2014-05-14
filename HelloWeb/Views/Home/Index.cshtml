@@ -3,6 +3,25 @@
 <ol>
 @foreach(var alertMode in Model.AlertModes)
 {
-	<a href="@alertMode.ChangeTypeUrl"><li class="@(alertMode.IsSelected ? "selected" : "")">@alertMode.Name</li></a>
+	<a href="@alertMode.ChangeTypeUrl">
+        <li class="@(alertMode.IsSelected ? "selected" : "")">
+            @alertMode.Name
+            <p style="margin: 10px">
+                <img src ="Content/@(alertMode.Type).jpeg" width="100" height="100"/>
+            </p>
+        </li>
+	</a>
 }
 </ol>
+
+<p>
+    Netduino checks status every 3 seconds
+</p>
+
+<p style ="margin: 50px">
+    -2014 © Andrew Krause-
+</p>
+
+
+
+

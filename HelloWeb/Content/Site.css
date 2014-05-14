@@ -1,5 +1,5 @@
 ﻿body {
-	background-color: lightblue;
+	background-color: royalblue;
 	text-align: center;
 }
 
@@ -21,17 +21,23 @@ li {
 	text-align: center;
 	display: inline-block;
 	margin: 15px;
-	line-height: 150px;
+	line-height: 25px;
 	font-size: 24px;
-	cursor:pointer;
+	cursor: pointer;
+    background-color: lightgoldenrodyellow;
 }
 
 li.selected {
-	color: green;
-	border: 4px solid green;
+	color: darkorange;
+	border: 4px solid darkorange;
 	width: 194px;
 	height: 144px;
-	line-height: 144px;
 	font-weight: bold;
-	cursor:default;
+	cursor: default;
+}
+
+imap {
+    margin: 10px;
+    padding: 0;
+    display: block;
 }

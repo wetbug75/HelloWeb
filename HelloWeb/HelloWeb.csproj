@@ -105,6 +105,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\TestBlink.jpeg" />
+    <Content Include="Content\TestOff.jpeg" />
+    <Content Include="Content\TestOn.jpeg" />
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\alert-light - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\alert-light - Web Deploy.pubxml" />

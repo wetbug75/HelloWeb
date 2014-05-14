@@ -1,8 +1,27 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@model HelloWeb.Models.HomeModel
 
-<h2>@ViewBag.Message</h2>
+<ol>
+@foreach(var alertMode in Model.AlertModes)
+{
+	<a href="@alertMode.ChangeTypeUrl">
+        <li class="@(alertMode.IsSelected ? "selected" : "")">
+            @alertMode.Name
+            <p style="margin: 10px">
+                <img src ="Content/@(alertMode.Type).jpeg" width="100" height="100"/>
+            </p>
+        </li>
+	</a>
+}
+</ol>
+
 <p>
-    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+    Netduino checks status every 3 seconds
 </p>
+
+<p style ="margin: 50px">
+    -2014 © Andrew Krause-
+</p>
+
+
+
+
