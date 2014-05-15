@@ -19,3 +19,5 @@ C:\Users\akrause\Documents\Visual Studio 2012\Projects\HelloWeb\HelloWeb\bin\Sys
 C:\Users\akrause\Documents\Visual Studio 2012\Projects\HelloWeb\HelloWeb\obj\Release\HelloWeb.dll
 C:\Users\akrause\Documents\Visual Studio 2012\Projects\HelloWeb\HelloWeb\obj\Release\HelloWeb.pdb
 C:\Users\akrause\Documents\Visual Studio 2012\Projects\HelloWeb\HelloWeb\obj\Release\HelloWeb.csprojResolveAssemblyReference.cache
+C:\Users\akrause\Documents\Visual Studio 2012\Projects\HelloWeb\HelloWeb\bin\Newtonsoft.Json.dll
+C:\Users\akrause\Documents\Visual Studio 2012\Projects\HelloWeb\HelloWeb\bin\Newtonsoft.Json.xml

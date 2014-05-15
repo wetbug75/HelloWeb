@@ -14,6 +14,8 @@ namespace HelloWeb.Controllers
         private static int pushCount = 0;
         private static int cycleCount = 0;
 
+        PagerDutyApi api = new PagerDutyApi();
+
 		public ActionResult Index()
 		{
 			// define the model for the home page:
@@ -103,8 +105,7 @@ namespace HelloWeb.Controllers
                     statusValue = hasEnoughPushes(10, 2);
                     break;
                 case AlertType.PagerDuty:
-                    //insert method here
-                    statusValue = false;
+                    statusValue = api.HasAnOutstandingIncident();
                     break;
 				default:
 					statusValue = false;

@@ -40,3 +40,5 @@ C:\Users\jsterling\Projects\HelloWeb\HelloWeb\bin\System.Web.WebPages.Razor.xml
 C:\Users\jsterling\Projects\HelloWeb\HelloWeb\obj\Debug\HelloWeb.csprojResolveAssemblyReference.cache
 C:\Users\jsterling\Projects\HelloWeb\HelloWeb\obj\Debug\HelloWeb.dll
 C:\Users\jsterling\Projects\HelloWeb\HelloWeb\obj\Debug\HelloWeb.pdb
+C:\Users\akrause\Documents\Visual Studio 2012\Projects\HelloWeb\HelloWeb\bin\Newtonsoft.Json.dll
+C:\Users\akrause\Documents\Visual Studio 2012\Projects\HelloWeb\HelloWeb\bin\Newtonsoft.Json.xml
