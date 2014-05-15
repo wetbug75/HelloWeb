@@ -11,6 +11,9 @@ namespace HelloWeb.Controllers
 		private static AlertType _currentAlertType = AlertType.TestOff;
 		private static bool      _lastAlertStatus;
 
+        private static int pushCount = 0;
+        private static int cycleCount = 0;
+
 		public ActionResult Index()
 		{
 			// define the model for the home page:
@@ -42,10 +45,24 @@ namespace HelloWeb.Controllers
                             new AlertMode
                                 {
                                     Type = AlertType.StockCheck,
-									Name = "- Stock Alert",
+									Name = "Stock Alert",
 									IsSelected = (_currentAlertType == AlertType.StockCheck),
 									ChangeTypeUrl = Url.Action("ChangeAlertType", new { newAlertType = AlertType.StockCheck })
-                                }
+                                },
+                            new AlertMode
+                                {
+                                    Type = AlertType.PressButton,
+                                    Name = "Press 10 Times",
+                                    IsSelected = (_currentAlertType == AlertType.PressButton),
+                                    ChangeTypeUrl = Url.Action("ChangeAlertType", new { newAlertType = AlertType.PressButton })
+                                },
+                            new AlertMode
+                                {
+                                    Type = AlertType.PagerDuty,
+                                    Name = "Pager Duty",
+                                    IsSelected = (_currentAlertType == AlertType.PagerDuty),
+                                    ChangeTypeUrl = Url.Action("ChangeAlertType", new { newAlertType = AlertType.PagerDuty })
+                                },
 						}
 				};
 
@@ -55,6 +72,8 @@ namespace HelloWeb.Controllers
 
 		public ActionResult ChangeAlertType(AlertType newAlertType)
 		{
+            pushCount++;
+
 			// change the alert type to the new value passed in:
 			_currentAlertType = newAlertType;
 
@@ -80,6 +99,13 @@ namespace HelloWeb.Controllers
                 case AlertType.StockCheck: //if stock is down, alert light turns on
                     statusValue = isStockDown("http://download.finance.yahoo.com/d/quotes.csv?s=aapl&f=snl1c1p2&e=.csv");
                     break;
+                case AlertType.PressButton: //press a designated # of times to turn on light for designated # of cycles
+                    statusValue = hasEnoughPushes(10, 2);
+                    break;
+                case AlertType.PagerDuty:
+                    //insert method here
+                    statusValue = false;
+                    break;
 				default:
 					statusValue = false;
 					break;
@@ -91,6 +117,21 @@ namespace HelloWeb.Controllers
 			// return "1" if true; otherwise "0":
 			return Content(statusValue ? "1" : "0");
 		}
+
+        public bool hasEnoughPushes(int num, int cycles)
+        {
+            if (pushCount >= num)
+            {
+                cycleCount++;
+                if (cycleCount >= cycles)
+                {
+                    cycleCount = 0;
+                    pushCount = 0;
+                }
+                return true;
+            } 
+            return false;
+        }
 
         public bool isStockDown(string x)
         {

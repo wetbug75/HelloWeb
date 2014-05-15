@@ -105,6 +105,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\PressButton.jpeg" />
+    <Content Include="Content\StockCheck.jpeg" />
     <Content Include="Content\TestBlink.jpeg" />
     <Content Include="Content\TestOff.jpeg" />
     <Content Include="Content\TestOn.jpeg" />

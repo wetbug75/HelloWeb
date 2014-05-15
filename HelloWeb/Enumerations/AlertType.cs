@@ -5,6 +5,8 @@
 		TestOff,
 		TestOn,
 		TestBlink,
-        StockCheck
+        StockCheck,
+        PressButton,
+        PagerDuty
 	}
 }
